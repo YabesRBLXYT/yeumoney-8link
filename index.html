@@ -28,7 +28,7 @@
                 const li = document.createElement('li');
                 li.className = 'clickable-text';
                 li.textContent = item.text;
-                li.onclick = () => window.location.href = item.url;
+                li.onclick = () => window.open(item.url, '_blank');
                 list.appendChild(li);
             });
         })
