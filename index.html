@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clickable List from JSON</title>
+    <style>
+        .clickable-text {
+            color: blue;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<ul id="link-list">
+    <!-- List akan diisi dari JSON -->
+</ul>
+
+<script>
+    // Memuat data dari file data.json
+    fetch('data.json')
+        .then(response => response.json())
+        .then(data => {
+            const list = document.getElementById('link-list');
+            data.forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'clickable-text';
+                li.textContent = item.text;
+                li.onclick = () => window.location.href = item.url;
+                list.appendChild(li);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+</script>
+
+</body>
+</html>
